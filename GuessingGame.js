@@ -81,7 +81,7 @@ Game.prototype.checkGuess = function(num) {
 
         $('.fworks').fireworks({ sound: true, opacity: 0.9, width: '100%', height: '100%' });
         setTimeout(function() {
-            window.location.reload();
+            window.location.reload(true);
         }, 30000);
         $('#hint').attr('disabled', 'disabled');
         $('#inputbutton').attr('disabled', 'disabled');
@@ -139,7 +139,7 @@ Game.prototype.checkGuess = function(num) {
         if ($('.fire').is(":visible")) {
             $('.fire').hide();
         }
-        $('body').addClass('ice', 500);
+        $('body').addClass('ice');
         return "You\'re ice cold!";
     }
 
@@ -177,10 +177,12 @@ $(document).ready(function() {
             $('#msg').text(game.playersGuessSubmission(num));
             if ($('#msg').text() !== "You have already guessed that number.") {
                 if (Math.abs(num - game.winningNumber) < 100 && Math.abs(num - game.winningNumber) > 25) {
+                    $
                     $(place).addClass('cold');
-                    $('#msg').addClass('cold');
+                    $('#msg').addClass('coldmsg');
+
                 } else {
-                    $('#msg').removeClass('cold');
+                    $('#msg').removeClass('coldmsg');
                     $(place).removeClass('cold');
                 }
 
@@ -205,7 +207,7 @@ $(document).ready(function() {
         }, 5000);
     });
     $('#reset').on('dblclick', function() {
-        window.location.reload();
+        window.location.reload(true);
     });
     $('#hint').on('click', function() {
         $('#hnt').text('YOUR HINTS ARE:' + game.provideHint());
