@@ -52,13 +52,6 @@ Game.prototype.playersGuessSubmission = function(num) {
 
 Game.prototype.checkGuess = function(num) {
     if (this.pastGuesses.includes(num)) {
-        if ($('.fire').is(":visible")) {
-            $('.fire').hide();
-        }
-        if ($('body').hasClass('ice')) {
-            $('body').removeClass('ice');
-
-        }
         return "You have already guessed that number."
     } else if (this.pastGuesses.length === 3 && num !== this.winningNumber) {
         if ($('.fire').is(":visible")) {
@@ -181,14 +174,15 @@ $(document).ready(function() {
         if (enterclick(event)) {
             var num = +$('#guess').val();
             $('#msg').text(game.playersGuessSubmission(num));
-            if (Math.abs(num - game.winningNumber) < 100 && Math.abs(num - game.winningNumber) > 25) {
-                $(place).addClass('cold');
-                $('#msg').addClass('cold');
-                $('#msg').addClass('center');
-            } else {
-                $('#msg').removeClass('cold');
-            }
             if ($('#msg').text() !== "You have already guessed that number.") {
+                if (Math.abs(num - game.winningNumber) < 100 && Math.abs(num - game.winningNumber) > 25) {
+                    $(place).addClass('cold');
+                    $('#msg').addClass('cold');
+                } else {
+                    $('#msg').removeClass('cold');
+                    $(place).removeClass('cold');
+                }
+
                 $(place).text('_' + num + '_');
                 $('#guess').val('');
                 place = $(place).next();
