@@ -56,7 +56,7 @@ Game.prototype.checkGuess = function(num) {
     } else {
         this.pastGuesses.push(num);
     }
-    if (this.pastGuesses.length === 3 && num !== this.winningNumber) {
+    if (this.pastGuesses.length === 4 && num !== this.winningNumber) {
         if ($('.fire').is(":visible")) {
             $('.fire').hide();
         }
