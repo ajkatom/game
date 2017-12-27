@@ -1,8 +1,3 @@
-// $(document).ready(function() {
-//     $("#inputbutton").click(function() {
-//         $("body{background-image:url(frozen-lake.jpg)").fadeIn(3000);
-//     });
-// });
 generateWinningNumber = function() {
     return Math.floor((Math.random() * 100) + 1);
 }
@@ -56,7 +51,16 @@ Game.prototype.playersGuessSubmission = function(num) {
 };
 
 Game.prototype.checkGuess = function(num) {
-    if (this.pastGuesses.length === 3 && num !== this.winningNumber) {
+    if (this.pastGuesses.includes(num)) {
+        if ($('.fire').is(":visible")) {
+            $('.fire').hide();
+        }
+        if ($('body').hasClass('ice')) {
+            $('body').removeClass('ice');
+
+        }
+        return "You have already guessed that number."
+    } else if (this.pastGuesses.length === 3 && num !== this.winningNumber) {
         if ($('.fire').is(":visible")) {
             $('.fire').hide();
         }
@@ -88,15 +92,6 @@ Game.prototype.checkGuess = function(num) {
 
         return 'YOU WIN!!!!!!';
 
-    } else if (this.pastGuesses.includes(num)) {
-        if ($('.fire').is(":visible")) {
-            $('.fire').hide();
-        }
-        if ($('body').hasClass('ice')) {
-            $('body').removeClass('ice');
-
-        }
-        return "You have already guessed that number."
     } else {
         this.pastGuesses.push(num);
     }
@@ -166,25 +161,48 @@ Game.prototype.provideHint = function() {
     return shuffle(hArr);
 }
 
+function enterclick(event) {
+    if (event.type === 'click') {
+        return true;
+    } else if (event.type === 'keypress') {
+        var code = event.charCode || event.keyCode;
+        if (code === 13) {
+            return true;
+        }
+    } else {
+        return false;
+    }
+}
 
 $(document).ready(function() {
     game = new Game;
     var place = $('#guesses').find('li').first();
-    $("#inputbutton").on('click', function() {
-        var num = +$('#guess').val();
-        $('#msg').text(game.playersGuessSubmission(num));
-        if (Math.abs(num - game.winningNumber) < 100 && Math.abs(num - game.winningNumber) > 25) {
-            $(place).addClass('cold');
-            $('#msg').addClass('cold');
-        } else {
-            $('#msg').removeClass('cold');
+    var exc = function(event) {
+        if (enterclick(event)) {
+            var num = +$('#guess').val();
+            $('#msg').text(game.playersGuessSubmission(num));
+            if (Math.abs(num - game.winningNumber) < 100 && Math.abs(num - game.winningNumber) > 25) {
+                $(place).addClass('cold');
+                $('#msg').addClass('cold');
+                $('#msg').addClass('center');
+            } else {
+                $('#msg').removeClass('cold');
+            }
+            if ($('#msg').text() !== "You have already guessed that number.") {
+                $(place).text('_' + num + '_');
+                $('#guess').val('');
+                place = $(place).next();
+            }
+
         }
-        $(place).text('_' + num + '_');
-        $('#guess').val('');
-        place = $(place).next();
-
-
+    };
+    $("#guess").on('keypress', function(event) {
+        exc(event);
     });
+    $("#inputbutton").on('click', function(event) {
+        exc(event);
+    });
+
     $('#reset').on('click', function() {
         $('#msg').text('Are You Sure ? if you are Double click');
         setTimeout(function() {
