@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Guessing Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
+    <script src="jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+    <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="fire-0.62.min.js"></script>
+    <script src="jquery.fireworks.js"></script>
+
+    <script type="text/javascript" src=GuessingGame.js></script>
+
+
+    <body>
+        <div class='fworks'>
+            <div class="container">
+                <div id='app'>
+                    <div id='headers'>
+                        <div class='center'>
+                            <h1>Guessing Game</h1>
+                            <h2 id='msg'>Feeling Lucky</h2>
+                            <h2 id='hnt'></h2>
+                        </div>
+                    </div>
+
+                    <div id='main'>
+
+                        <div class='center'>
+                            <div id='input-parent'>
+                                <input type="number" id='guess' maxlength="100" placeholder='Your Guess' />
+
+                            </div>
+
+                            <input type="button" id=inputbutton value="Submit" />
+
+                            <div id='guesses'>
+                                <ul type="square">
+                                    <li id='li1'>___</li>
+                                    <li id='li2'>___</li>
+                                    <li id='li3'>___</li>
+                                    <li id='li4'>___</li>
+                                </ul>
+                            </div>
+
+                            <div class="btn btn-default">
+                                <input type="button" id='reset' value="Reset" />
+                                <input type="button" id='hint' value="Hint" />
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id='footer'>
+
+                    <div class='fsimages'>
+                        <div id='fa'>
+                            <img src='fa-logo@2x.png'></img>
+                        </div>
+                    </div>
+
+
+
+                    <div class='center'>
+                        <div id='name'>
+                            <h4>Alon J Adelson</h4>
+                        </div>
+                    </div>
+
+                    <div class='fsimages'>
+                        <div id='gh'>
+                            <img src='grace_hopper_academy.png'></img>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="fire"> </div>
+    </body>
+
+</html>
