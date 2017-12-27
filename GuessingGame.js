@@ -150,7 +150,7 @@ Game.prototype.checkGuess = function(num) {
         if ($('.fire').is(":visible")) {
             $('.fire').hide();
         }
-        $('body').addClass('ice');
+        $('body').addClass('ice', 500);
         return "You\'re ice cold!";
     }
 
