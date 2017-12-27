@@ -53,7 +53,10 @@ Game.prototype.playersGuessSubmission = function(num) {
 Game.prototype.checkGuess = function(num) {
     if (this.pastGuesses.includes(num)) {
         return "You have already guessed that number."
-    } else if (this.pastGuesses.length === 3 && num !== this.winningNumber) {
+    } else {
+        this.pastGuesses.push(num);
+    }
+    if (this.pastGuesses.length === 3 && num !== this.winningNumber) {
         if ($('.fire').is(":visible")) {
             $('.fire').hide();
         }
@@ -85,8 +88,6 @@ Game.prototype.checkGuess = function(num) {
 
         return 'YOU WIN!!!!!!';
 
-    } else {
-        this.pastGuesses.push(num);
     }
     if (Math.abs(num - this.winningNumber) < 10) {
         $(document).ready(function() {
