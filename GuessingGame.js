@@ -185,9 +185,9 @@ $(document).ready(function() {
                 }
 
                 $(place).text('_' + num + '_');
-                $('#guess').val('');
                 place = $(place).next();
             }
+            $('#guess').val('');
 
         }
     };
