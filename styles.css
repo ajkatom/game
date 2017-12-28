@@ -61,8 +61,8 @@ h2,
 
 #inputbutton {
     display: inline-block;
-    left: 0px;
-    top: 10px;
+    left: 140px;
+    bottom: 40px;
     background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
     background-image: linear-gradient(top, #f4f1ee, #fff);
     border-radius: 50%;
