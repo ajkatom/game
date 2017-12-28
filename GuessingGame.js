@@ -45,6 +45,7 @@ Game.prototype.playersGuessSubmission = function(num) {
         $('.container').effect('shake');
         throw $('#msg').text("That is an invalid guess.");
     } else {
+        $('#msg').css({ 'color': "#fff" });
         this.playersGuess = num;
     }
     return this.checkGuess(num);
