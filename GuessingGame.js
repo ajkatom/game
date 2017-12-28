@@ -69,7 +69,10 @@ Game.prototype.checkGuess = function(num) {
         setTimeout(function() {
             window.location.reload();
         }, 30000);
+        $('#hint').attr('disabled', 'disabled');
+        $('#inputbutton').attr('disabled', 'disabled');
         return 'SORRY ONLY 4 GUESSES ALLOWED ,YOU LOOSE,TRY AGAIN '
+
     } else if (num === this.winningNumber) {
         if ($('.fire').is(":visible")) {
             $('.fire').hide();
@@ -85,7 +88,6 @@ Game.prototype.checkGuess = function(num) {
         }, 30000);
         $('#hint').attr('disabled', 'disabled');
         $('#inputbutton').attr('disabled', 'disabled');
-
         return 'YOU WIN!!!!!!';
 
     }
@@ -156,7 +158,13 @@ Game.prototype.provideHint = function() {
 }
 
 function enterclick(event) {
-    if (event.type === 'click') {
+    if ($('#inputbutton').is(':disabled')) {
+        if (event.type === 'keypress') {
+            if (e.keyCode == 13) {
+                return false;
+            }
+        }
+    } else if (event.type === 'click') {
         return true;
     } else if (event.type === 'keypress') {
         var code = event.charCode || event.keyCode;
@@ -192,6 +200,7 @@ $(document).ready(function() {
             $('#guess').val('');
 
         }
+
     };
     $("#guess").on('keypress', function(event) {
         exc(event);
