@@ -67,9 +67,6 @@ Game.prototype.checkGuess = function(num) {
         }
         $('#msg').css({ 'color': 'red' });
         $('.container').effect('shake');
-        setTimeout(function() {
-            window.location.reload();
-        }, 30000);
         $('#hint').attr('disabled', 'disabled');
         $('#inputbutton').attr('disabled', 'disabled');
         return 'SORRY ONLY 4 GUESSES ALLOWED ,YOU LOOSE,TRY AGAIN '
@@ -86,7 +83,7 @@ Game.prototype.checkGuess = function(num) {
         $('.fworks').fireworks({ sound: true, opacity: 0.9, width: '100%', height: '100%' });
         setTimeout(function() {
             window.location.reload(true);
-        }, 30000);
+        }, 15000);
         $('#hint').attr('disabled', 'disabled');
         $('#inputbutton').attr('disabled', 'disabled');
         return 'YOU WIN!!!!!!';
