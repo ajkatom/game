@@ -69,6 +69,10 @@ Game.prototype.checkGuess = function(num) {
         $('.container').effect('shake');
         $('#hint').attr('disabled', 'disabled');
         $('#inputbutton').attr('disabled', 'disabled');
+
+        setTimeout(function() {
+            window.location.reload(true);
+        }, 10000);
         return 'SORRY ONLY 4 GUESSES ALLOWED ,YOU LOOSE,TRY AGAIN '
 
     } else if (num === this.winningNumber) {
@@ -83,7 +87,7 @@ Game.prototype.checkGuess = function(num) {
         $('.fworks').fireworks({ sound: true, opacity: 0.9, width: '100%', height: '100%' });
         setTimeout(function() {
             window.location.reload(true);
-        }, 15000);
+        }, 30000);
         $('#hint').attr('disabled', 'disabled');
         $('#inputbutton').attr('disabled', 'disabled');
         return 'YOU WIN!!!!!!';
