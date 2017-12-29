@@ -38,6 +38,10 @@ img {
     text-align: center;
 }
 
+#guesses {
+    box-sizing: border-box;
+}
+
 h1,
 h2,
 #guesses {
@@ -189,6 +193,7 @@ li {
 }
 
 #name {
+    position: relative;
     padding-left: 200px;
     color: rgb(6, 171, 236);
 }
